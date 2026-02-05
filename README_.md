@@ -3,29 +3,37 @@
 <h3>Building the Model:</h3>
 <p align="center">
   <img src="ScreenShots_model/1-import.png" width="200"/><br>
-    importing pandas and numpy<br>
+    <p>importing pandas and numpy<br>
     pandas: Used for data manipulation and analysis (DataFrames).
-    numpy: Used for numerical operations.   
+    numpy: Used for numerical operations.</p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/2-read_datasheet.png" width="200"/><br>
+  <p>
   We load two CSV files: movies contains metadata (budget, genres, etc.), and credits contains information about the cast and crew.
+  <p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/3-merge_mocr.png" width="200"/><br>
+  <p>
   Since both files share a title column, we merge them into a single DataFrame to have all information in one place.
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/4-n_column.png" width="200"/><br>
+  <p>
   We discard unnecessary columns (like budget, popularity, release date) and keep only the features that help define the "content" of a movie for recommendation.
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/5-dropna.png" width="200"/><br>
+  <p>
   dropna(): Removes rows with missing values (inplace -> modifies the actual csv file).
+  </p>
 </p>
 
 <p align="center">
@@ -58,7 +66,9 @@ Once the loop finishes checking all dictionaries in that cell, the function retu
 
 <p align="center">
   <img src="ScreenShots_model/7-convertGenKey.png" width="200"/><br>
+  <p>
   converting genres and keyword column into list with the help op convert function and assign in those columns
+  </p>
 </p>
 
 <p align="center">
@@ -93,7 +103,9 @@ The function returns the list containing the names of the top 3 actors (e.g., ['
 
 <p align="center">
   <img src="ScreenShots_model/9-convertCast.png" width="200"/><br>
+  <p>
   to get top 3 character the cast data is giveing to the convertCast function and assigning the returned list into the cast 
+  </p>
 </p>
 
 <p align="center">
@@ -130,47 +142,65 @@ The function returns the final list containing the director's name (e.g., ['Chri
 
 <p align="center">
   <img src="ScreenShots_model/11-DirInCrew.png" width="200"/><br>
+  <p>
   crew data is send to the findDirector function and stored the returned data in the crew
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/12-splitOverview.png" width="200"/><br>
+  <p>
   splitting the overview data
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/13-removeSpace.png" width="200"/><br>
+  <p>
   We remove spaces between names ("Johnny Depp" becomes "JohnnyDepp"). This is crucial so that the vectorizer treats the full name as a single unique entity/tag.
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/14-tagsColumn.png" width="200"/><br>
+  <p>
   creating a new column name tags that have overview genres keywords cast crew
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/15-new_df.png" width="200"/><br>
+  <p>
   creating new data frame called new_df having movie_id, title, tags
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/16-tagsConvertString.png" width="200"/><br>
+  <p>
   converting tags data into string
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/17-tagsLowercase.png" width="200"/><br>
+  <p>
   lowercasing the string of the tags
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/18-impNLTK.png" width="200"/><br>
+  <p>
   installing nltk and importing nltk
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/19-impPorterStemmer.png" width="200"/><br>
+  <p>
   We use stemming to convert words to their root form (e.g. "activities" and "activity" both become "activi"). This prevents the model from treating different forms of the same word as different tags.
+  </p>
 </p>
 
 <p align="center">
@@ -203,12 +233,16 @@ After all words in the string are stemmed, " ".join(y) takes the list of words a
 
 <p align="center">
   <img src="ScreenShots_model/21-stemapplytotags.png" width="200"/><br>
+  <p>
   giving tags data to the stem function
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/22-impCountVectorizer.png" width="200"/><br>
+  <p>
   importing skit learn to use vectorize calss to vectorize our data
+  </p>
 </p>
 
 <p align="center">
@@ -248,12 +282,16 @@ This means you have 4,806 rows (one for each movie) and 5,000 columns (one for e
 
 <p align="center">
   <img src="ScreenShots_model/24-cosineSimilarity.png" width="200"/><br>
+  <p>
   to use cosine_similarity
+  </p>
 </p>
 
 <p align="center">
   <img src="ScreenShots_model/25-similarity.png" width="200"/><br>
+  <p>
   assign the value of distance in the similarity
+  </p>
 </p>
 
 <p align="center">
@@ -289,10 +327,12 @@ new_df.iloc[...]: This locates the row in the dataframe using that index.
 
 <p align="center">
   <img src="ScreenShots_model/27-pickle.png" width="200"/><br>
+  <p>
   creating .pkl file to use these file in the streamlit
+  </p>
 </p>
 
-<h3>StreamLit</h3>
+<h3>Building StreamLit website</h3>
 
 <p align="center">
   <img src="ScreenShots_Streamlit/1-import.png" width="200"/>
@@ -364,7 +404,7 @@ st.write(i): It prints each title onto the webpage.
   </p>
 </p>
 
-<h3>How to run the mode:</h3>
+<h2>How to run the mode:</h2>
 
 1. first run the main_.ipynb file if there is no movie_dict.pkl and similarity.pkl file in the project directory
 2. then run the code (streamlit run app.py) int the project terminal
