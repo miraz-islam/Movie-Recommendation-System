@@ -291,3 +291,81 @@ new_df.iloc[...]: This locates the row in the dataframe using that index.
   <img src="ScreenShots_model/27-pickle.png" width="200"/><br>
   creating .pkl file to use these file in the streamlit
 </p>
+
+<h3>StreamLit</h3>
+
+<p align="center">
+  <img src="ScreenShots_Streamlit/1-import.png" width="200"/>
+  <p>
+streamlit: Turns your Python script into a webpage. It provides the buttons, sliders, and text boxes users interact with.
+
+pandas: Acts as the translator. It takes the raw user input and organizes it into a table (DataFrame) that your model understands.
+
+pickle: Is the delivery service. It unfreezes (loads) your saved machine learning model from your hard drive into the app's memory.
+  </p>
+</p>
+
+<p align="center">
+  <img src="ScreenShots_Streamlit/2-title.png" width="200"/>
+  <p>
+    Title of the website
+  </p>
+</p>
+
+<p align="center">
+  <img src="ScreenShots_Streamlit/3.usepickle.png" width="200"/>
+  <p>
+movie_list: Loads a dictionary containing movie metadata (titles, IDs, genres) that you previously saved.
+
+movies: Converts that dictionary into a Pandas DataFrame, making it easy to search, filter, and display titles in your Streamlit app.
+
+similarity: Loads a Similarity Matrix (likely created via Cosine Similarity). This is a large grid of scores where every movie is compared to every other movie to see how "alike" they are.
+  </p>
+</p>
+
+<p align="center">
+  <img src="ScreenShots_Streamlit/4-selectBox.png" width="200"/>
+  <p>
+st.selectbox: Creates the UI element.
+
+'Enter the movie name:': This is the label the user sees above the box.
+
+movies['title'].values: This feeds the "Title" column from your DataFrame into the dropdown as the list of choices.
+
+selectedName: This variable stores whatever movie the user clicks on, allowing you to use it for your recommendation logic.
+  </p>
+</p>
+
+<p align="center">
+  <img src="ScreenShots_Streamlit/5-recom_fun.png" width="200"/>
+  <p>
+movie_index: Finds the "row number" of the selected movie in your DataFrame.
+
+similarity[movie_index]: Pulls the specific row from your similarity matrix that contains the "closeness scores" between the chosen movie and every other movie.
+
+enumerate: Pairs each score with its index so you don't lose track of which movie is which after sorting.
+
+sorted(...)[1:6]: Sorts the scores from highest to lowest. It skips index 0 (the movie itself) and takes the next five.
+
+recommended.append(...): Converts those top 5 indices back into actual movie titles.
+  </p>
+</p>
+
+<p align="center">
+  <img src="ScreenShots_Streamlit/6-button.png" width="200"/>
+  <p>
+st.button("Recommend"): This creates the clickable button. In Streamlit, this statement returns True only for the moment it is clicked.
+
+recommendation = recommend(selectedName): It passes the movie selected in your dropdown into your logic function to get the top 5 titles.
+
+for i in recommendation:: It loops through that list of 5 titles.
+
+st.write(i): It prints each title onto the webpage.
+  </p>
+</p>
+
+<h3>How to run the mode:</h3>
+
+1. first run the main_.ipynb file if there is no movie_dict.pkl and similarity.pkl file in the project directory
+2. then run the code (streamlit run app.py) int the project terminal
+3. Give the movie name then press the recommend button to get the movie recommendation
