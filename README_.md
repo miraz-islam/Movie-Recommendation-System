@@ -42,7 +42,7 @@
 
 <p align="center">
   <img src="ScreenShots_model/9-convertCast.png" width="200"/><br>
-  converting the cast data using the convertCast function
+  converting the cast data using the convertCast function.
 </p>
 
 <p align="center">
